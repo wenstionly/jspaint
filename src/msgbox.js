@@ -9,6 +9,13 @@
 
 window.defaultMessageBoxTitle = localize("Paint");
 
+const chord_mute_key = 'play_chord_mute';
+function toggle_mute_chord() {
+	localStorage[chord_mute_key] = is_chord_muted() ? '' : "muted";
+}
+function is_chord_muted() {
+	return !!localStorage[chord_mute_key];
+}
 try {
 	// <audio> element is simpler for sound effects,
 	// but in iOS/iPad it shows up in the Control Center, as if it's music you'd want to play/pause/etc.
@@ -20,6 +27,8 @@ try {
 			.then(response => response.arrayBuffer())
 			.then(array_buffer => audioContext.decodeAudioData(array_buffer))
 	var play_chord = async function () {
+		if(is_chord_muted())
+			return;
 		audioContext.resume(); // in case it was not allowed to start until a user interaction
 		// Note that this should be before waiting for the audio buffer,
 		// so that it works the first time.

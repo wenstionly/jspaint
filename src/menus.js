@@ -1175,6 +1175,15 @@ window.menus = {
 			},
 			description: localize("Arranges the color box vertically."),
 		},
+		{
+			item: localize("Mute"),
+			checkbox: {
+				toggle: ()=> toggle_mute_chord(),
+				check: ()=> {
+					return is_chord_muted();
+				},
+			},
+		},
 		MENU_DIVIDER,
 		{
 			item: "🗃️ " + localize("Manage Storage"),

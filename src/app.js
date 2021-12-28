@@ -1017,7 +1017,7 @@ $G.on("keydown", e => {
 				}
 			break;
 			case "O":
-				file_open();
+				e.shiftKey ? file_load_from_url() : file_open();
 			break;
 			case "N":
 				e.shiftKey ? clear() : file_new();

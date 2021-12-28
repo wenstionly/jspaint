@@ -64,6 +64,7 @@ window.menus = {
 		{
 			item: localize("&Load From URL"),
 			// shortcut: "Ctrl+L",
+			shortcut: "Ctrl+Shift+O",
 			speech_recognition: [
 				"load from url",
 				"load from a url",

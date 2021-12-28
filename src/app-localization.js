@@ -1029,8 +1029,9 @@ function get_language_endonym(language) {
 
 let current_language = base_language;
 for (const accepted_language of accepted_languages) {
-	if (available_languages.indexOf(accepted_language) !== -1) {
-		current_language = accepted_language;
+	const adjustCN = (accepted_language === 'zh-CN' || accepted_languages === 'zh') ? 'zh-simplified' : accepted_language;
+	if (available_languages.indexOf(adjustCN) !== -1) {
+		current_language = adjustCN;
 		break;
 	}
 }
